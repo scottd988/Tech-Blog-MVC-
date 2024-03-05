@@ -1,0 +1,13 @@
+<div class="d-flex flex-wrap gap-3 justify-content-center">
+  {{#each posts as |post| }}
+  <div class="card" style="max-width: 500px;">
+    <div class="row g-0">
+      <div class="card-body">
+        <a class="card-title text-decoration-none stretched-link" href="/posts/{{id}}"><h5>{{title}}</h5></a>
+        <p class="card-text">{{text}}</p>
+        <p class="card-text"><small class="text-body-secondary">Posted by {{user.username}} on {{format_date date_added}}</small></p>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
