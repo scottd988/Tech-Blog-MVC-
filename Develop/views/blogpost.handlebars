@@ -1,0 +1,40 @@
+{{#if loggedIn}}
+<div class="card">
+  <div class="row g-0">
+    <div class="card-body">
+      <h5 class="card-title">{{post.title}}</h5>
+      <p class="card-text">{{post.text}}</p>
+      <p class="card-text"><small class="text-body-secondary">Posted by {{post.user.username}} on {{format_date post.date_added}}</small></p>
+    </div>
+  </div>
+</div>
+
+{{#each post.comments}}
+  <div class="card mt-2">
+    <div class="card-body">
+      <p>{{ text }}</p>
+      <p class="form-text">--{{ user.username }}, {{ format_date date_added }}</p>
+    </div>
+  </div>
+{{/each}}
+
+<div class="card mt-2">
+  <div class="row g-0">
+    <div class="card-body">
+      <form class="add-comment">
+        <h6>Comment</h6>
+        <div class="mb-3">
+          <textarea class="form-control" id="comment" rows="3"></textarea>
+        </div>
+        <div class="d-grid gap-2 col-12">
+          <button type="submit" class="btn btn-primary mb-3">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="../js/comment.js"></script>
+
+{{else}}
+<div class="text-center"><a href="/login">You must login in order to view this page</a></div>
+{{/if}}
