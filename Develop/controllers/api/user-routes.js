@@ -17,8 +17,9 @@ router.post('/', async (req, res) => {
     });
 } catch (err) {
     console.log(err);
-    res.status(500).json(err);
-  }
+    console.error("Error creating user:", err.message);
+    res.status(500).json({ message: err.message });
+}
 });
 
 // Login
@@ -42,7 +43,7 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+        .json({ message: 'Incorrect username or password. Please try again!' });
       return;
     }
 req.session.save(() => {
